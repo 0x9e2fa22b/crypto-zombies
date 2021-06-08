@@ -26,4 +26,8 @@ contract ZombieFactory {
   // There are two types of arrays in Solidity: fixed arrays and dynamic arrays
   Zombie[] public zombies; // dynamic arrays
 
+  // memory: This is required for all reference types such as arrays, structs, mappings, and strings.
+  function createZombie(string memory _name, uint _dna) public {
+        
+  }
 }
