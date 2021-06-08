@@ -7,5 +7,12 @@ contract ZombieFactory {
   // The uint data type is an unsigned integer (non-negative)
   // uint is actually an alias for uint256
   uint dnaDigits = 16;
-  
+
+  // Math Operations
+  // Addition: x + y
+  // Subtraction: x - y,
+  // Multiplication: x * y
+  // Division: x / y
+  // Modulus / remainder: x % y (for example, 13 % 5 is 3, because if you divide 5 into 13, 3 is the remainder)
+  uint dnaModulus = 10 ** dnaDigits;
 }
