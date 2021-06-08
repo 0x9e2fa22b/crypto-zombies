@@ -27,7 +27,9 @@ contract ZombieFactory {
   Zombie[] public zombies; // dynamic arrays
 
   // memory: This is required for all reference types such as arrays, structs, mappings, and strings.
-  function createZombie(string memory _name, uint _dna) public {
+  // In Solidity, functions are public by default
+  // This means anyone (or any other contract) can call your contract's function and execute its code
+  function _createZombie(string memory _name, uint _dna) private {
     // Add new Zombie to zombies
     zombies.push(Zombie(_name, _dna));
   }
