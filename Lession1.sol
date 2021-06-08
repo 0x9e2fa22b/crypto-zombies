@@ -21,4 +21,9 @@ contract ZombieFactory {
     string name;
     uint dna;
   }
+
+  // Use array when want to collection of something
+  // There are two types of arrays in Solidity: fixed arrays and dynamic arrays
+  Zombie[] public zombies; // dynamic arrays
+
 }
