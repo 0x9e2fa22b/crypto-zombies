@@ -37,6 +37,11 @@ contract ZombieFactory {
   // view function: meaning it's only viewing the data but not modifying it
   // pure function: you're not even accessing any data in the app, return value depends only on its function parameters
   function _generateRandomDna(string memory _str) private view returns (uint) {
-
+    // keccak256: SHA3
+    // keccak256 expects a single parameter of type bytes
+    // So we have to "pack" any parameters before calling keccak256
+    // uint(...) Typecasting
+    uint rand = uint(keccak256(abi.encodePacked(_str)));
+    return rand % dnaModulus;
   }
 }
