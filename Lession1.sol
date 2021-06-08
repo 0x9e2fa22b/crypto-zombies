@@ -15,4 +15,10 @@ contract ZombieFactory {
   // Division: x / y
   // Modulus / remainder: x % y (for example, 13 % 5 is 3, because if you divide 5 into 13, 3 is the remainder)
   uint dnaModulus = 10 ** dnaDigits;
+
+  // Use structs to define complex data type
+  struct Zombie {
+    string name;
+    uint dna;
+  }
 }
