@@ -28,6 +28,7 @@ contract ZombieFactory {
 
   // memory: This is required for all reference types such as arrays, structs, mappings, and strings.
   function createZombie(string memory _name, uint _dna) public {
-        
+    // Add new Zombie to zombies
+    zombies.push(Zombie(_name, _dna));
   }
 }
