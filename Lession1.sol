@@ -2,6 +2,9 @@ pragma solidity >= 0.5.0 < 0.6.0 //1. Enter solidity version here
 
 //2. Create contract here
 contract ZombieFactory {
+
+  // Events are a way for your contract to communicate that something happened on the blockchain to your app front-end
+  event NewZombie(uint zombieId, string name, uint dna);
   
   // State variables will be stored permanently in the blockchain
   // The uint data type is an unsigned integer (non-negative)
@@ -31,7 +34,10 @@ contract ZombieFactory {
   // This means anyone (or any other contract) can call your contract's function and execute its code
   function _createZombie(string memory _name, uint _dna) private {
     // Add new Zombie to zombies
-    zombies.push(Zombie(_name, _dna));
+    // array.push() returns a uint of the new length of the array
+    uint id = zombies.push(Zombie(_name, _dna)) - 1;
+
+    emit NewZombie(id, _name, _dna);
   }
 
   // view function: meaning it's only viewing the data but not modifying it
