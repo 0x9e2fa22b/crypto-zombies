@@ -33,4 +33,10 @@ contract ZombieFactory {
     // Add new Zombie to zombies
     zombies.push(Zombie(_name, _dna));
   }
+
+  // view function: meaning it's only viewing the data but not modifying it
+  // pure function: you're not even accessing any data in the app, return value depends only on its function parameters
+  function _generateRandomDna(string memory _str) private view returns (uint) {
+
+  }
 }
