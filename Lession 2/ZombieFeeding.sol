@@ -34,12 +34,15 @@ contract ZombieFeeding is ZombieFactory {
     // Make sure that _targetDna isn't longer than 16 digits
     _targetDna = _targetDna % dnaModulus;
     uint newDna = (myZombie.dna + _targetDna) / 2;
+    if (keccak256(abi.encodePacked(_species)) == keccak256(abi.encodePacked("kitty"))) {
+      newDna = newDna - newDna % 100 + 99;
+    }
     _createZombie("NoName", newDna);
   }
 
   function feedOnKitty(uint _zombieId, uint _kittyId) public {
     uint kittyDna;
     (, , , , , , , , , , kittyDna) = kittyContract.getKitty(_kittyId);
-    feedAndMultiply(_zombieId, kittyDna);
+    feedAndMultiply(_zombieId, kittyDna, "kitty");
   }
 }
