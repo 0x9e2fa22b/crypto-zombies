@@ -10,5 +10,10 @@ contract ZombieFeeding is ZombieFactory {
     // State variables (variables declared outside of functions) are by default storage and written permanently to the blockchain,
     // while variables declared inside functions are memory and will disappear when the function call ends.
     Zombie storage myZombie = zombies[_zombieId];
+
+    // Make sure that _targetDna isn't longer than 16 digits
+    _targetDna = _targetDna % dnaModulus;
+    uint newDna = (myZombie.dna + _targetDna) / 2;
+    _createZombie("NoName", newDna);
   }
 }
