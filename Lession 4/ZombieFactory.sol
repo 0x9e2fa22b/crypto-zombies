@@ -16,6 +16,8 @@ contract ZombieFactory is Ownable {
     uint dna;
     uint32 level;
     uint32 readyTime;
+    uint16 winCount;
+    uint16 lossCount;
   }
 
   Zombie[] public zombies;
@@ -30,7 +32,9 @@ contract ZombieFactory is Ownable {
         _name,
         _dna,
         1,
-        uint32(now + cooldownTime)
+        uint32(now + cooldownTime),
+        0,
+        0
       )
     ) - 1;
 
