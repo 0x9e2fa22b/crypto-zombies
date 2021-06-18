@@ -8,6 +8,7 @@ import "./ERC721.sol";
 // So these are a perfect fit for making our zombies tradeable.
 
 contract ZombieOwnership is ZombieAttack, ERC721 {
+  mapping (uint => address) zombieApprovals;
 
   // Return the number of zombies _owner has
   function balanceOf(address _owner) external view returns (uint256) {
@@ -28,7 +29,9 @@ contract ZombieOwnership is ZombieAttack, ERC721 {
   }
 
   function transferFrom(address _from, address _to, uint256 _tokenId) external payable {
-    
+    require(zombieToOwner[_tokenId] == msg.sender || zombieApprovals[_tokenId] == msg.sender);
+
+    _transfer(_from, _to, _tokenId);
   }
 
   function approve(address _approved, uint256 _tokenId) external payable {
