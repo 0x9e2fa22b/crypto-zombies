@@ -15,6 +15,11 @@ contract CallerContract is Ownable {
   event ReceivedNewRequestIdEvent(uint256 id);
   event PriceUpdatedEvent(uint256 ethPrice, uint256 id);
 
+  modifier onlyOracle() {
+    require(msg.sender == oracleAddress, "You are not authorized to call this function.");
+    _;
+  }
+
   function setOracleInstanceAddress(address _oracleInstanceAddress) public onlyOwner {
     oracleAddress = _oracleInstanceAddress;
     oracleInstance = EthPriceOracleInterface(oracleAddress);
